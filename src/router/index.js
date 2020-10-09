@@ -1,15 +1,29 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import imp from '@/components/Import'
+import Vue from "vue";
+import Router from "vue-router";
+import analysis from "@/views/analysis/Index";
+import layout from "@/components/layout/Index";
+import MapDown from "@/views/mapDown/Index";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'imp',
-      component: imp
+      path: "/",
+      redirect: "/analysis",
+      component: layout,
+      children: [
+        {
+          path: "/analysis",
+          name: "analysis",
+          component: analysis
+        },
+        {
+          path: "/mapDown",
+          name: "mapDown",
+          component: MapDown
+        }
+      ]
     }
   ]
-})
+});
